@@ -1,5 +1,13 @@
 import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
+
+export const onGet: RequestHandler = ({ cacheControl }) => {
+  cacheControl({
+    maxAge: 3600,
+    sMaxAge: 86400,
+    staleWhileRevalidate: 86400,
+  });
+};
 
 export default component$(() => {
   return (
